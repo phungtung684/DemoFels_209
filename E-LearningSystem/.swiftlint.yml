@@ -1,0 +1,15 @@
+disabled_rules:
+  - cyclomatic_complexity
+  - line_length
+  - nesting
+  - todo
+  - file_length
+  - trailing_whitespace
+excluded:
+  - Pods
+  - brooklynTests
+file_length:
+  - 500
+type_body_length:
+  - 300
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit)
