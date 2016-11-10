@@ -38,10 +38,15 @@ class WordListViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     func handleCustomFBLogin() {
         FBSDKLoginManager().logInWithReadPermissions(["email", "public_profile"], fromViewController: self) { (result, error) in
-            print(result?.token.tokenString)
+            print(result?.token.tokenString ?? "cancel")
         }
         FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).startWithCompletionHandler { (connection, result, error) in
-            print(result)
+            let id = result["id"] as? String ?? ""
+            let name = result["name"] as? String ?? ""
+            let email = result["email"] as? String ?? ""
+            print(id)
+            print(name)
+            print(email)
         }
     }
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
